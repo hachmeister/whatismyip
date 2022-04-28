@@ -35,7 +35,7 @@ type JSONResponse struct {
 func getRoot(ctx *gin.Context) {
 	reg := regexp.MustCompile(userAgentPattern)
 	if reg.Match([]byte(ctx.Request.UserAgent())) {
-		ctx.String(http.StatusOK, ctx.ClientIP())
+		ctx.String(http.StatusOK, ctx.ClientIP()+"\n")
 	} else {
 		name := "home"
 		if setting.App.TemplatePath != "" {
@@ -72,7 +72,7 @@ func getAllAsString(ctx *gin.Context) {
 }
 
 func getJSON(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, jsonOutput(ctx))
+	ctx.PureJSON(http.StatusOK, jsonOutput(ctx))
 }
 
 func jsonOutput(ctx *gin.Context) JSONResponse {

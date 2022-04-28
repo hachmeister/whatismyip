@@ -90,9 +90,9 @@ func getGeoAsString(ctx *gin.Context) {
 	if field == "" {
 		ctx.String(http.StatusOK, geoCityRecordToString(record))
 	} else if g, ok := geoOutput[field]; ok {
-		ctx.String(http.StatusOK, g.format(record))
+		ctx.String(http.StatusOK, g.format(record)+"\n")
 	} else {
-		ctx.String(http.StatusNotFound, http.StatusText(http.StatusNotFound))
+		ctx.String(http.StatusNotFound, http.StatusText(http.StatusNotFound)+"\n")
 	}
 }
 
@@ -104,9 +104,9 @@ func getASNAsString(ctx *gin.Context) {
 	if field == "" {
 		ctx.String(http.StatusOK, geoASNRecordToString(record))
 	} else if g, ok := asnOutput[field]; ok {
-		ctx.String(http.StatusOK, g.format(record))
+		ctx.String(http.StatusOK, g.format(record)+"\n")
 	} else {
-		ctx.String(http.StatusNotFound, http.StatusText(http.StatusNotFound))
+		ctx.String(http.StatusNotFound, http.StatusText(http.StatusNotFound)+"\n")
 	}
 }
 
