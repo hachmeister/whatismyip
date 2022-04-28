@@ -38,7 +38,7 @@ func getRoot(ctx *gin.Context) {
 		}
 		ctx.HTML(http.StatusOK, name, jsonOutput(ctx))
 	case gin.MIMEJSON:
-		getJSON(ctx)
+		ctx.PureJSON(http.StatusOK, jsonOutput(ctx))
 	default:
 		ctx.String(http.StatusOK, ctx.ClientIP()+"\n")
 	}
