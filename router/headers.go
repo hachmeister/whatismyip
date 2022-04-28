@@ -21,10 +21,10 @@ func getHeaderAsString(ctx *gin.Context) {
 
 	h := ctx.Params.ByName("header")
 	if v := headers.Get(ctx.Params.ByName("header")); v != "" {
-		ctx.String(http.StatusOK, template.HTMLEscapeString(v))
+		ctx.String(http.StatusOK, template.HTMLEscapeString(v)+"\n")
 	} else if strings.ToLower(h) == "host" {
-		ctx.String(http.StatusOK, template.HTMLEscapeString(ctx.Request.Host))
+		ctx.String(http.StatusOK, template.HTMLEscapeString(ctx.Request.Host)+"\n")
 	} else {
-		ctx.String(http.StatusNotFound, http.StatusText(http.StatusNotFound))
+		ctx.String(http.StatusNotFound, http.StatusText(http.StatusNotFound)+"\n")
 	}
 }

@@ -87,7 +87,7 @@ func getAllAsString(ctx *gin.Context) {
 }
 
 func getJSON(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, jsonOutput(ctx))
+	ctx.PureJSON(http.StatusOK, jsonOutput(ctx))
 }
 
 func jsonOutput(ctx *gin.Context) JSONResponse {
